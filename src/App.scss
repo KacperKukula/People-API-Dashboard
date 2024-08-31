@@ -1,0 +1,21 @@
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  padding-top: 4rem;
+  width: clamp(300px, 100%, 800px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  .connectionTest {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+  }
+}

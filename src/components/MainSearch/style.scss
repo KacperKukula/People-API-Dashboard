@@ -1,0 +1,42 @@
+@import '../../variables.scss';
+
+.search {
+    max-height: 42px;
+    display: grid;
+    font-size: 1.2rem;
+    width: 100%;
+    grid-template-columns: 4rem auto 4rem;
+    border: 1px solid $lightBorderColor;
+    border-radius: .5rem;
+    overflow: hidden;
+
+    .method {
+        text-align: center;
+        padding: .4rem .8rem;
+    }
+
+    button {
+        border-radius: 0px;
+        transition: filter .2s ease;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        &, &:active, &:hover, &:focus {
+            border: none;
+        }
+
+        &:hover {
+            filter: brightness(85%);
+        }
+    }
+
+    input {
+        border: none;
+        box-sizing: border-box;
+        min-width: clamp(300px, 100%, 1200px);
+        padding: .3rem .5rem;
+        font-size: 1rem;
+    }
+}
