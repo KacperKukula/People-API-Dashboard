@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './style.scss'
 import { LoadingButton } from '@mui/lab';
 import axios, { AxiosResponse } from 'axios';
-import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import { HttpMethod } from '@/models/HttpMethod';
 
 type HttpMethodType = typeof HttpMethod[keyof typeof HttpMethod];
@@ -13,7 +13,11 @@ function Search() {
     const [requesting, setRequestng] = useState(false);
     const [response, setResponse] = useState(null);
 
-    const [ method ] = useState<HttpMethodType>(HttpMethod.POST);
+    const [ method, setMethod ] = useState<HttpMethodType>(HttpMethod.POST);
+
+    const handleChange = (event: SelectChangeEvent) => {
+        setMethod(event.target.value);
+      };
 
     const sendRequest = (): any => {
 
@@ -50,24 +54,27 @@ function Search() {
         //         />
         // </div>
 
-        <FormControl>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
-            <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={method}
-                label="Age">
+        <FormControl className="mainSearch">
+            <div>
+                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={method}
+                    onChange={handleChange}
+                    label="Age">
 
-                {Object.entries(HttpMethod).map(([key, value]) => (
-                    <MenuItem key={key} value={value}>
-                        {key}
-                    </MenuItem>
-                ))}
-
-            </Select>
+                    {
+                        Object.entries(HttpMethod).map(([key, value]) => (
+                            <MenuItem key={key} value={value}>{key}</MenuItem>
+                        ))
+                    }
+                </Select>
+            </div>
 
             <TextField
                 id="outlined-error"
+                className="mainSearch_input"
                 label="Error"
                 defaultValue="Hello World"/>
 
