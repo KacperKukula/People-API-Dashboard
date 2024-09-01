@@ -9,5 +9,14 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src')
     }
-  }
+  },
+  css: {
+    /* Include to all scss variables.scss */
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/variables.scss";`,
+        includePaths: [path.resolve(__dirname, 'src/styles')],
+      },
+    },
+  },
 })
